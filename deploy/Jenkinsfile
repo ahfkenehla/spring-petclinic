@@ -13,11 +13,24 @@ pipeline {
                 git url: 'https://github.com/ahfkenehla/spring-petclinic.git',
                 branch: 'main', credentialsId: 'gitCredentials'
             }
-            
+            post {
+                success {
+                    echo 'Git Clone Success'
+                }
+                failure {
+                    echo 'Git Clone Fail'
+                }
+            }
         }
         stage('Build') {
             steps {
                 echo 'Build'
+                sh 'mvn -Dmaven.test.failure.ignore=true clean package'
+            }
+            post {
+                success {
+                    junit 'target/surefire-reports/**/*.xml'
+                }
             }
         }
         stage('Docker Image') {
