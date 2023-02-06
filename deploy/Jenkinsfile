@@ -33,9 +33,9 @@ pipeline {
                 }
             }
         }
-        stage('Docker Image') {
+        stage('Docker Build') {
             steps {
-                echo 'Docker Image'
+                echo 'Docker Build'
             }
         }
         stage('Docker Push') {
