@@ -7,7 +7,7 @@ pipeline {
     }
     
     environment {
-        AWS_CREDENTIAL_NAME = 'awEcrCredentials'
+        AWS_CREDENTIAL_NAME = 'awsEcrCredentials'
         REGION = 'ap-northeast-2'
         ECR_REPOSITORY = '257307634175.dkr.ecr.ap-northeast-2.amazonaws.com'
         ECR_DOCKER_IMAGE = 'std01-spring-petclinic/spring-petclinic'
@@ -46,6 +46,7 @@ pipeline {
                     docker.withRegistry("https://${ECR_REPOSITORY}", "ecr:${REGION}:${AWS_CREDENTIAL_NAME}") {
                         exidocker.image("${ECR_DOCKER_IMAGE}:${ECR_DOCKER_TAG}").push()
                     }
+                }
             }
         }
         stage('Deploy') {
