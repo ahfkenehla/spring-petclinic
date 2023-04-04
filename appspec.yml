@@ -18,5 +18,5 @@ hooks:
       timeout: 100
       
   ApplicationStart:
-    - location: scripts/run_process.sh
+    - location: deploy/scripts/run_process.sh
       timeout: 3600
