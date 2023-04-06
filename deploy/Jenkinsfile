@@ -24,7 +24,7 @@ pipeline {
             }
             post {
                 success {
-                    echo 'success clone project'
+                    echo 'success clone project!'
                 }
                 failure {
                     error 'fail clone project' // exit pipeline
